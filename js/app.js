@@ -34,8 +34,10 @@ function formatDate(dateString) {
     return date.toLocaleDateString("en-GB", {
         day: "2-digit",
         month: "short",
-        year: "numeric"
-    });
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    }).replace(",", "");
 }
 
 function createNewCard(item) {
@@ -43,8 +45,8 @@ function createNewCard(item) {
         <article class="card">
             ${item.imageUrl ?
             `
-                    <div class="card__image">
-                        <img src="${item.imageUrl}" alt="${item.title}">
+                    <div class="card__image-wrapper">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="card__image">
                     </div>
                 `
             : ``
@@ -52,9 +54,14 @@ function createNewCard(item) {
             <div class="card__content">
                 <p class="card__date">${formatDate(item.publishedAt)}</p>
                 <h2 class="card__title">${item.title}</h2>
-                <p class="news-card__excerpt">${item.excerpt}</p>
-                <a class="news-card__link" href="${item.url}">Read more</a>
+                <p class="card__excerpt">${item.excerpt}</p>
             </div>
+            <a class="card__link" href="${item.url}">
+                <span>Read more</span>
+                <svg class="card__arrow" viewBox="0 0 17 14" fill="none">
+                    <path d="M5.65674 12.4039L11.3136 6.74708L5.65674 1.09022" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            </a>
         </article>
     `;
 }
