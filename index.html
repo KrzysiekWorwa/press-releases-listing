@@ -43,16 +43,29 @@
                         </select>
                     </div>
                 </div>
-                <div class="news__grid">
+
+                <div class="news__grid" id="newsGrid"></div>
+
+
+                <div class="news__state" id="newsLoading" hidden>
+                    <p>Loading...</p>
                 </div>
+
+                <div class="news__state" id="newsError" hidden>
+                    <p>Something went wrong. Please try again.</p>
+                </div>
+
                 <div class="news__actions">
-                    <button class="news__button">
+                    <button class="news__button" id="loadMoreButton">
                         Load more
                     </button>
                 </div>
             </div>
         </section>
     </main>
+
+    <script type="module" src="js/app.js"></script>
+
 </body>
 
 </html>
