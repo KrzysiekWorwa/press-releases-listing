@@ -41,8 +41,10 @@ function formatDate(dateString) {
 }
 
 function createNewCard(item) {
+    const cardSizeClass = item.imageUrl ? 'tall' : 'short';
+
     return `
-        <article class="card">
+        <article class="card ${cardSizeClass}">
             ${item.imageUrl ?
             `
                     <div class="card__image-wrapper">
