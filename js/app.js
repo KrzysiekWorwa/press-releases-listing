@@ -4,6 +4,8 @@ const newsError = document.querySelector("#newsError");
 const newsEmpty = document.querySelector("#newsEmpty");
 const loadMoreButton = document.querySelector("#loadMoreButton");
 const chipButtons = document.querySelectorAll(".news__chip");
+const newsGridOverlay = document.querySelector("#newsGridOverlay");
+const newsActions = document.querySelector("#newsActions");
 
 const state = {
     allPressReleases: [],
@@ -101,10 +103,24 @@ function updateLoadMoreButton(filteredItems) {
     }
 }
 
+function updateGridOverlay(filteredItems) {
+    if (filteredItems.length <= state.visibleItems) {
+        newsGridOverlay.hidden = true;
+    } else {
+        newsGridOverlay.hidden = false;
+    }
+}
+
+function updateActionsVisibility(filteredItems) {
+    newsActions.hidden = filteredItems.length === 0;
+}
+
 function showEmptyState() {
     newsEmpty.hidden = false;
     newsGrid.innerHTML = "";
     loadMoreButton.disabled = true;
+    newsGridOverlay.hidden = true;
+    newsActions.hidden = true;
 }
 
 function hideEmptyState() {
@@ -113,6 +129,8 @@ function hideEmptyState() {
 
 function renderVisibleItems() {
     const filteredItems = getFilteredItems();
+
+    updateActionsVisibility(filteredItems);
 
     if (filteredItems.length === 0) {
         showEmptyState();
@@ -124,6 +142,7 @@ function renderVisibleItems() {
     const itemsToRender = filteredItems.slice(0, state.visibleItems);
     renderCards(itemsToRender);
     updateLoadMoreButton(filteredItems);
+    updateGridOverlay(filteredItems);
 }
 
 function setActiveChip(clickedButton) {
@@ -161,6 +180,8 @@ function showLoading() {
     newsError.hidden = true;
     newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
+    newsGridOverlay.hidden = true;
+    newsActions.hidden = true;
 }
 
 function hideLoading() {
@@ -172,6 +193,8 @@ function showError() {
     newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
     loadMoreButton.disabled = true;
+    newsGridOverlay.hidden = true;
+    newsActions.hidden = true;
 }
 
 async function init() {

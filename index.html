@@ -45,7 +45,11 @@
                     </div>
                 </div>
 
-                <div class="news__grid" id="newsGrid"></div>
+                <div class="news__grid-wrapper">
+                    <div class="news__grid" id="newsGrid"></div>
+
+                    <div class="news__grid-overlay" id="newsGridOverlay" aria-hidden="true"></div>
+                </div>
 
 
                 <div class="news__state" id="newsLoading" hidden>
@@ -60,7 +64,7 @@
                     <p>No results found.</p>
                 </div>
 
-                <div class="news__actions">
+                <div class="news__actions" id="newsActions" hidden>
                     <button class="news__button" id="loadMoreButton">
                         Load more
                     </button>

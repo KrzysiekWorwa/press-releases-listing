@@ -95,12 +95,30 @@
     }
 }
 
+.news__grid-wrapper {
+    position: relative;
+    margin-top: 80px;
+}
+
+@media (max-width: 992px) {
+
+    .news__grid-wrapper {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .news__grid-wrapper {
+        margin-top: 20px;
+    }
+}
+
 .news__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
     gap: 20px;
-    margin-top: 80px;
 }
 
 @media (max-width: 992px) {
@@ -108,7 +126,6 @@
     .news__grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
-        margin-top: 40px;
     }
 }
 
@@ -116,9 +133,26 @@
 
     .news__grid {
         grid-template-columns: 1fr;
-        margin-top: 20px;
         grid-auto-rows: auto;
     }
+}
+
+.news__grid-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 300px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, #F5F8FF00, #F5F8FFCC, #F5F8FF);
+}
+
+.news__state {
+    text-align: center;
+    padding-bottom: 70px;
+    color: #070C1E;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .news__actions {
@@ -126,7 +160,6 @@
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
-    gap: 77px;
 }
 
 .news__button {
@@ -157,11 +190,13 @@
     padding: 11.5px 40px;
     border-radius: 60px;
     cursor: default;
+    margin-top: 40px;
 }
 
 .news__button-nav {
     display: flex;
     gap: 30px;
+    margin-top: 77px;
 }
 
 .news__button-arrow {
@@ -177,17 +212,6 @@
 .news__button-numbers {
     display: flex;
     gap: 10px;
-}
-
-.news__button-number {
-    width: 48px;
-    height: 48px;
-    background-color: #F5F8FF;
-    border-radius: 50%;
-    border: none;
-    color: #070C1E;
-    font-size: 18px;
-    font-weight: 600;
 }
 
 .news__button-number {
