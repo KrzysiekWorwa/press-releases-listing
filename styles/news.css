@@ -55,7 +55,7 @@
     white-space: nowrap;
 }
 
-.news__chip:active {
+.news__chip--active {
     background-color: #2554F014;
 }
 

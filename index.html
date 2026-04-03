@@ -22,16 +22,17 @@
                 </header>
                 <div class="news__filters">
                     <div class="news__chips">
-                        <button class="news__chip">
+                        <button class="news__chip news__chip--active" data-category="all">
                             All news
                         </button>
-                        <button class="news__chip">
+                        <button class="news__chip" data-category="regulatory">
                             Regulatory
                         </button>
-                        <button class="news__chip">
+                        <button class="news__chip" data-category="non_regulatory">
                             Non Regulatory
                         </button>
                     </div>
+
                     <div class="news__selects">
                         <select class="news__select">
                             <option>Filter by type</option>
@@ -54,6 +55,10 @@
 
                 <div class="news__state" id="newsError" hidden>
                     <p>Something went wrong. Please try again.</p>
+                </div>
+
+                <div class="news__state" id="newsEmpty" hidden>
+                    <p>No results found.</p>
                 </div>
 
                 <div class="news__actions">

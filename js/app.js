@@ -1,6 +1,15 @@
 const newsGrid = document.querySelector("#newsGrid");
 const newsLoading = document.querySelector("#newsLoading");
 const newsError = document.querySelector("#newsError");
+const newsEmpty = document.querySelector("#newsEmpty");
+const loadMoreButton = document.querySelector("#loadMoreButton");
+const chipButtons = document.querySelectorAll(".news__chip");
+
+const state = {
+    allPressReleases: [],
+    selectedCategory: "all",
+    visibleItems: 6
+}
 
 async function getPressReleases() {
     const shouldFail = false;
@@ -10,7 +19,8 @@ async function getPressReleases() {
         setTimeout(async () => {
             try {
                 if (shouldFail) {
-                    reject(new Error("Fake Api error"));
+                    reject(new Error("Fake API error"));
+                    return;
                 }
 
                 const response = await fetch("./data/pressReleases.json");
@@ -38,6 +48,16 @@ function formatDate(dateString) {
         hour: "2-digit",
         minute: "2-digit"
     }).replace(",", "");
+}
+
+function getFilteredItems() {
+    if (state.selectedCategory === "all") {
+        return state.allPressReleases;
+    }
+
+    return state.allPressReleases.filter((item) => {
+        return item.category === state.selectedCategory;
+    });
 }
 
 function createNewCard(item) {
@@ -68,14 +88,78 @@ function createNewCard(item) {
     `;
 }
 
-function renderCard(items) {
+function renderCards(items) {
     const cardsMarkup = items.map(createNewCard).join("");
     newsGrid.innerHTML = cardsMarkup;
+}
+
+function updateLoadMoreButton(filteredItems) {
+    if (filteredItems.length <= state.visibleItems) {
+        loadMoreButton.disabled = true;
+    } else {
+        loadMoreButton.disabled = false;
+    }
+}
+
+function showEmptyState() {
+    newsEmpty.hidden = false;
+    newsGrid.innerHTML = "";
+    loadMoreButton.disabled = true;
+}
+
+function hideEmptyState() {
+    newsEmpty.hidden = true;
+}
+
+function renderVisibleItems() {
+    const filteredItems = getFilteredItems();
+
+    if (filteredItems.length === 0) {
+        showEmptyState();
+        return;
+    }
+
+    hideEmptyState();
+
+    const itemsToRender = filteredItems.slice(0, state.visibleItems);
+    renderCards(itemsToRender);
+    updateLoadMoreButton(filteredItems);
+}
+
+function setActiveChip(clickedButton) {
+    chipButtons.forEach((button) => {
+        button.classList.remove("news__chip--active");
+    });
+
+    clickedButton.classList.add("news__chip--active");
+}
+
+function handleChipClick(event) {
+    const clickedButton = event.currentTarget;
+    const selectedCategory = clickedButton.dataset.category;
+
+    state.selectedCategory = selectedCategory;
+    state.visibleItems = 6;
+
+    setActiveChip(clickedButton);
+    renderVisibleItems();
+}
+
+function initChipButtons() {
+    chipButtons.forEach((button) => {
+        button.addEventListener("click", handleChipClick);
+    });
+}
+
+function handleLoadMore() {
+    state.visibleItems += 6;
+    renderVisibleItems();
 }
 
 function showLoading() {
     newsLoading.hidden = false;
     newsError.hidden = true;
+    newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
 }
 
@@ -85,7 +169,9 @@ function hideLoading() {
 
 function showError() {
     newsError.hidden = false;
+    newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
+    loadMoreButton.disabled = true;
 }
 
 async function init() {
@@ -93,10 +179,14 @@ async function init() {
         showLoading();
 
         const pressReleases = await getPressReleases();
-        renderCard(pressReleases);
+        state.allPressReleases = pressReleases;
+
+        renderVisibleItems();
+        initChipButtons();
+        loadMoreButton.addEventListener("click", handleLoadMore);
     }
     catch (error) {
-        console.log(error);
+        console.error(error);
         showError();
     }
     finally {
