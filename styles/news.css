@@ -5,32 +5,6 @@
     margin-bottom: 50px;
 }
 
-.news__filters {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-@media (max-width: 992px) {
-
-    .news__filters {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .news__filters {
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
-}
-
 .news__chips {
     display: flex;
     gap: 20px;
@@ -58,41 +32,6 @@
 
 .news__chip--active {
     background-color: #2554F014;
-}
-
-.news__selects {
-    display: flex;
-    gap: 30px;
-    min-width: 0;
-}
-
-@media (max-width: 600px) {
-    .news__selects {
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-        align-items: center;
-    }
-}
-
-.news__select {
-    width: 300px;
-    min-width: 150px;
-    max-width: 300px;
-    padding: 13px 16px 13px 16px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 140%;
-    background-color: #EFF3FF;
-    border: 1px solid #E0E0E0;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-@media (max-width: 992px) {
-    .news__select {
-        width: 100%;
-    }
 }
 
 .news__grid-wrapper {
@@ -172,46 +111,4 @@
 
 .news__button:hover {
     background-color: #070C1EE6;
-}
-
-.news__button:disabled {
-    background-color: #070C1E14;
-    margin-top: 40px;
-}
-
-.news__button-nav {
-    display: flex;
-    gap: 30px;
-    margin-top: 77px;
-}
-
-.news__button-arrow {
-    width: 48px;
-    height: 48px;
-    background-color: #070C1E14;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.news__button-numbers {
-    display: flex;
-    gap: 10px;
-}
-
-.news__button-number {
-    width: 48px;
-    height: 48px;
-    background-color: #F5F8FF;
-    border-radius: 50%;
-    border: none;
-    color: #070C1E;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.news__button-number--active {
-    background-color: #070C1E;
-    color: white;
 }
