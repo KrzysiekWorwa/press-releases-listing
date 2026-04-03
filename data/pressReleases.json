@@ -2,9 +2,9 @@
     {
         "id": "1",
         "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "excerpt": "Cras iaculis quis ipsum non feugiat.",
+        "excerpt": "Cras iaculis quis ipsum non feugiat. Donec porttitor erat nulla, non interdum orci.",
         "publishedAt": "2025-11-27T13:23:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Update",
         "imageUrl": "assets/images/news-1.webp",
         "url": "/news/1"
@@ -12,7 +12,7 @@
     {
         "id": "2",
         "title": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "excerpt": "Donec porttitor erat nulla, non interdum orci aliquam nec. Aliquam nec erat nulla, non interdum orci.",
+        "excerpt": "Donec porttitor erat nulla, non interdum orci aliquam nec. Aliquam nec erat nulla, non interdum orci. Phasellus id eros leo.",
         "publishedAt": "2025-10-15T09:00:00Z",
         "category": "non_regulatory",
         "type": "Report",
@@ -21,7 +21,7 @@
     {
         "id": "3",
         "title": "Ut enim ad minim veniam quis nostrud exercitation.",
-        "excerpt": "Phasellus id eros leo.",
+        "excerpt": "Phasellus id eros leo sed ut perspiciatis unde omnis.",
         "publishedAt": "2025-09-10T12:30:00Z",
         "category": "regulatory",
         "type": "Announcement",
@@ -31,9 +31,9 @@
     {
         "id": "4",
         "title": "Duis aute irure dolor in reprehenderit in voluptate velit esse.",
-        "excerpt": "Aliquam nec erat nulla, non interdum orci.",
+        "excerpt": "Aliquam nec erat nulla, non interdum orci. Ut enim ad minima veniam quis.",
         "publishedAt": "2025-08-05T08:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Article",
         "url": "/news/4"
     },
@@ -50,7 +50,7 @@
     {
         "id": "6",
         "title": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur.",
-        "excerpt": "Totam rem aperiam eaque ipsa quae ab illo inventore.",
+        "excerpt": "Totam rem aperiam eaque ipsa quae ab illo inventore. Veritatis et quasi architecto beatae vitae.",
         "publishedAt": "2025-06-20T11:00:00Z",
         "category": "non_regulatory",
         "type": "Update",
@@ -59,9 +59,9 @@
     {
         "id": "7",
         "title": "Neque porro quisquam est qui dolorem ipsum quia dolor.",
-        "excerpt": "Ut enim ad minima veniam quis nostrum exercitationem.",
+        "excerpt": "Ut enim ad minima veniam quis nostrum exercitationem ullam corporis.",
         "publishedAt": "2025-05-18T10:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Article",
         "imageUrl": "assets/images/news-4.webp",
         "url": "/news/7"
@@ -69,9 +69,9 @@
     {
         "id": "8",
         "title": "Quis autem vel eum iure reprehenderit qui in ea voluptate.",
-        "excerpt": "Velit esse quam nihil molestiae consequatur.",
+        "excerpt": "Velit esse quam nihil molestiae consequatur. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore cum soluta.",
         "publishedAt": "2025-04-12T09:45:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Announcement",
         "url": "/news/8"
     },
@@ -80,7 +80,7 @@
         "title": "At vero eos et accusamus et iusto odio dignissimos.",
         "excerpt": "Et harum quidem rerum facilis est et expedita distinctio.",
         "publishedAt": "2025-03-01T16:20:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Update",
         "imageUrl": "assets/images/news-1.webp",
         "url": "/news/9"
@@ -88,18 +88,18 @@
     {
         "id": "10",
         "title": "Nam libero tempore cum soluta nobis est eligendi optio.",
-        "excerpt": "Temporibus autem quibusdam et aut officiis debitis.",
+        "excerpt": "Temporibus autem quibusdam et aut officiis debitis. Itaque earum rerum hic tenetur.",
         "publishedAt": "2025-02-14T13:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Report",
         "url": "/news/10"
     },
     {
         "id": "11",
         "title": "Itaque earum rerum hic tenetur a sapiente delectus.",
-        "excerpt": "Ut aut reiciendis voluptatibus maiores alias consequatur.",
+        "excerpt": "Ut aut reiciendis voluptatibus maiores alias consequatur. Aut perferendis doloribus asperiores.",
         "publishedAt": "2024-12-20T10:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Announcement",
         "imageUrl": "assets/images/news-2.webp",
         "url": "/news/11"
@@ -109,16 +109,16 @@
         "title": "Quis nostrum exercitationem ullam corporis suscipit.",
         "excerpt": "Nisi ut aliquid ex ea commodi consequatur.",
         "publishedAt": "2024-11-11T08:30:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Article",
         "url": "/news/12"
     },
     {
         "id": "13",
         "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-        "excerpt": "Cras iaculis quis ipsum non feugiat.",
+        "excerpt": "Cras iaculis quis ipsum non feugiat. Sit voluptatem accusantium doloremque laudantium.",
         "publishedAt": "2024-10-05T14:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Report",
         "imageUrl": "assets/images/news-3.webp",
         "url": "/news/13"
@@ -126,9 +126,9 @@
     {
         "id": "14",
         "title": "Sed ut perspiciatis unde omnis iste natus error.",
-        "excerpt": "Sit voluptatem accusantium doloremque laudantium.",
+        "excerpt": "Sit voluptatem accusantium doloremque laudantium. Totam rem aperiam eaque ipsa quae ab illo.",
         "publishedAt": "2024-09-01T11:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Update",
         "url": "/news/14"
     },
@@ -137,7 +137,7 @@
         "title": "Ut enim ad minima veniam quis nostrum exercitationem.",
         "excerpt": "Ullam corporis suscipit laboriosam nisi ut aliquid.",
         "publishedAt": "2024-08-15T09:15:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Announcement",
         "imageUrl": "assets/images/news-4.webp",
         "url": "/news/15"
@@ -145,7 +145,7 @@
     {
         "id": "16",
         "title": "Duis aute irure dolor in reprehenderit.",
-        "excerpt": "In voluptate velit esse cillum dolore eu fugiat.",
+        "excerpt": "In voluptate velit esse cillum dolore eu fugiat. Nulla elementum justo sed suscipit.",
         "publishedAt": "2024-07-10T16:00:00Z",
         "category": "non_regulatory",
         "type": "Article",
@@ -154,7 +154,7 @@
     {
         "id": "17",
         "title": "Excepteur sint occaecat cupidatat non proident.",
-        "excerpt": "Sunt in culpa qui officia deserunt mollit anim.",
+        "excerpt": "Sunt in culpa qui officia deserunt mollit anim. Id est laborum et dolorum fuga.",
         "publishedAt": "2024-06-05T12:00:00Z",
         "category": "regulatory",
         "type": "Update",
@@ -164,9 +164,9 @@
     {
         "id": "18",
         "title": "Sed do eiusmod tempor incididunt ut labore.",
-        "excerpt": "Et dolore magna aliqua ut enim ad minim.",
+        "excerpt": "Et dolore magna aliqua ut enim ad minim. Quis nostrud exercitation ullamco laboris nisi ut.",
         "publishedAt": "2024-05-01T10:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Report",
         "url": "/news/18"
     },
@@ -175,7 +175,7 @@
         "title": "Quis nostrud exercitation ullamco laboris nisi ut aliquip.",
         "excerpt": "Ex ea commodo consequat duis aute irure dolor.",
         "publishedAt": "2024-04-10T13:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Article",
         "imageUrl": "assets/images/news-2.webp",
         "url": "/news/19"
@@ -183,16 +183,16 @@
     {
         "id": "20",
         "title": "Velit esse cillum dolore eu fugiat nulla pariatur.",
-        "excerpt": "Excepteur sint occaecat cupidatat non proident.",
+        "excerpt": "Excepteur sint occaecat cupidatat non proident. Sunt in culpa qui officia.",
         "publishedAt": "2024-03-01T08:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Announcement",
         "url": "/news/20"
     },
     {
         "id": "21",
         "title": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-        "excerpt": "Nulla elementum justo sed suscipit fringilla.",
+        "excerpt": "Nulla elementum justo sed suscipit fringilla. Tellus a purus cras iaculis.",
         "publishedAt": "2023-12-15T10:00:00Z",
         "category": "regulatory",
         "type": "Report",
@@ -202,7 +202,7 @@
     {
         "id": "22",
         "title": "Diam dui lobortis mauris eget vulputate erat.",
-        "excerpt": "Tellus a purus cras iaculis quis ipsum.",
+        "excerpt": "Tellus a purus cras iaculis quis ipsum. Aliquam nec phasellus id eros leo sed ut.",
         "publishedAt": "2023-11-10T11:30:00Z",
         "category": "non_regulatory",
         "type": "Update",
@@ -213,7 +213,7 @@
         "title": "Donec porttitor erat nulla non interdum orci.",
         "excerpt": "Aliquam nec phasellus id eros leo.",
         "publishedAt": "2023-10-05T09:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Announcement",
         "imageUrl": "assets/images/news-4.webp",
         "url": "/news/23"
@@ -221,18 +221,18 @@
     {
         "id": "24",
         "title": "Phasellus id eros leo sed ut perspiciatis.",
-        "excerpt": "Unde omnis iste natus error sit voluptatem.",
+        "excerpt": "Unde omnis iste natus error sit voluptatem. Eaque ipsa quae ab illo inventore veritatis.",
         "publishedAt": "2023-09-01T13:20:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Article",
         "url": "/news/24"
     },
     {
         "id": "25",
         "title": "Accusantium doloremque laudantium totam rem aperiam.",
-        "excerpt": "Eaque ipsa quae ab illo inventore veritatis.",
+        "excerpt": "Eaque ipsa quae ab illo inventore veritatis. Et quasi architecto beatae vitae dicta sunt.",
         "publishedAt": "2023-08-18T12:00:00Z",
-        "category": "regulatory",
+        "category": "non_regulatory",
         "type": "Update",
         "imageUrl": "assets/images/news-1.webp",
         "url": "/news/25"
@@ -249,7 +249,7 @@
     {
         "id": "27",
         "title": "Neque porro quisquam est qui dolorem ipsum.",
-        "excerpt": "Quia dolor sit amet consectetur adipisci velit.",
+        "excerpt": "Quia dolor sit amet consectetur adipisci velit. Exercitationem ullam corporis suscipit laboriosam nisi.",
         "publishedAt": "2023-06-01T08:00:00Z",
         "category": "regulatory",
         "type": "Article",
@@ -259,16 +259,16 @@
     {
         "id": "28",
         "title": "Ut enim ad minima veniam quis nostrum.",
-        "excerpt": "Exercitationem ullam corporis suscipit laboriosam.",
+        "excerpt": "Exercitationem ullam corporis suscipit laboriosam. Nisi ut aliquid ex ea commodi.",
         "publishedAt": "2023-05-15T14:00:00Z",
-        "category": "non_regulatory",
+        "category": "regulatory",
         "type": "Announcement",
         "url": "/news/28"
     },
     {
         "id": "29",
         "title": "Nisi ut aliquid ex ea commodi consequatur.",
-        "excerpt": "Quis autem vel eum iure reprehenderit.",
+        "excerpt": "Quis autem vel eum iure reprehenderit. Molestiae consequatur vel illum qui dolorem.",
         "publishedAt": "2023-04-10T09:30:00Z",
         "category": "regulatory",
         "type": "Report",
@@ -278,7 +278,7 @@
     {
         "id": "30",
         "title": "Qui in ea voluptate velit esse quam nihil.",
-        "excerpt": "Molestiae consequatur vel illum qui dolorem.",
+        "excerpt": "Molestiae consequatur vel illum qui dolorem. Neque porro quisquam est qui.",
         "publishedAt": "2023-03-01T11:00:00Z",
         "category": "non_regulatory",
         "type": "Update",
