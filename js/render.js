@@ -11,7 +11,7 @@ export function formatDate(dateString) {
 }
 
 export function createNewCard(item) {
-    const cardSizeClass = item.imageUrl ? "tall" : "short";
+    const cardSizeClass = item.imageUrl ? "card--tall" : "card--short";
 
     return `
         <article class="card ${cardSizeClass}">

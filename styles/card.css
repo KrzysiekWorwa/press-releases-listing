@@ -70,10 +70,10 @@
     transform: translateY(1px);
 }
 
-.short {
+.card--short {
     grid-row: span 3;
 }
 
-.tall {
+.card--tall {
     grid-row: span 5;
 }
