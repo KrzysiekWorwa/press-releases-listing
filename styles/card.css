@@ -67,6 +67,7 @@
     color: #2554F0;
     width: 17px;
     height: 14px;
+    transform: translateY(1px);
 }
 
 .short {

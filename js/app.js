@@ -8,7 +8,7 @@ const chipButtons = document.querySelectorAll(".news__chip");
 const state = {
     allPressReleases: [],
     selectedCategory: "all",
-    visibleItems: 6
+    visibleItems: 8
 }
 
 async function getPressReleases() {
@@ -139,7 +139,7 @@ function handleChipClick(event) {
     const selectedCategory = clickedButton.dataset.category;
 
     state.selectedCategory = selectedCategory;
-    state.visibleItems = 6;
+    state.visibleItems = 8;
 
     setActiveChip(clickedButton);
     renderVisibleItems();
@@ -152,7 +152,7 @@ function initChipButtons() {
 }
 
 function handleLoadMore() {
-    state.visibleItems += 6;
+    state.visibleItems += 8;
     renderVisibleItems();
 }
 
