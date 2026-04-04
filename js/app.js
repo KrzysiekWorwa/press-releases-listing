@@ -15,6 +15,12 @@ import {
     renderTypeSelectOptions,
     renderYearSelectOptions
 } from "./filters.js";
+import {
+    getTotalPages,
+    getItemsForPage,
+    hasPreviousPage,
+    hasNextPage
+} from "./pagination.js";
 
 const newsGrid = document.querySelector("#newsGrid");
 const newsLoading = document.querySelector("#newsLoading");
@@ -29,13 +35,34 @@ const yearFilter = document.querySelector("#yearFilter");
 
 const ITEMS_PER_PAGE = 8;
 
+const PAGINATION_MODE = "both";
+
 const state = {
     allPressReleases: [],
     selectedCategory: "all",
     selectedType: "all",
     selectedYear: "all",
-    visibleItems: ITEMS_PER_PAGE
+    visibleItems: ITEMS_PER_PAGE,
+    currentPage: 1
 };
+
+function getPaginationState(filteredItems) {
+    const totalPages = getTotalPages(filteredItems, ITEMS_PER_PAGE);
+
+    return {
+        totalPages,
+        hasPrevious: hasPreviousPage(state.currentPage),
+        hasNext: hasNextPage(filteredItems, state.currentPage, ITEMS_PER_PAGE)
+    };
+}
+
+function getItemsToRender(filteredItems) {
+    if (PAGINATION_MODE === "load-more") {
+        return filteredItems.slice(0, state.visibleItems);
+    }
+
+    return getItemsForPage(filteredItems, state.currentPage, ITEMS_PER_PAGE);
+}
 
 function renderVisibleItems() {
     const filteredItems = getFilteredItems(state.allPressReleases, {
@@ -52,12 +79,26 @@ function renderVisibleItems() {
     hideEmptyState(newsEmpty);
     showPagination(newsPagination);
 
-    const itemsToRender = filteredItems.slice(0, state.visibleItems);
+    const itemsToRender = getItemsToRender(filteredItems);
     const hasMoreItems = filteredItems.length > state.visibleItems;
+    const { totalPages, hasPrevious, hasNext } = getPaginationState(filteredItems);
 
     renderCards(newsGrid, itemsToRender);
-    updateLoadMoreButton(loadMoreButton, hasMoreItems);
-    updateGridOverlay(newsGridOverlay, hasMoreItems);
+
+    if (PAGINATION_MODE === "load-more") {
+        updateLoadMoreButton(loadMoreButton, hasMoreItems);
+        updateGridOverlay(newsGridOverlay, hasMoreItems);
+    } else {
+        loadMoreButton.hidden = true;
+        newsGridOverlay.hidden = true;
+    }
+
+    console.log({
+        totalPages,
+        currentPage: state.currentPage,
+        hasPrevious,
+        hasNext
+    });
 }
 
 function setActiveChip(clickedButton) {
@@ -76,6 +117,7 @@ function handleChipClick(event) {
 
     state.selectedCategory = selectedCategory;
     state.visibleItems = ITEMS_PER_PAGE;
+    state.currentPage = 1;
 
     setActiveChip(clickedButton);
     renderVisibleItems();
@@ -95,12 +137,14 @@ function handleLoadMore() {
 function handleTypeChange(event) {
     state.selectedType = event.target.value;
     state.visibleItems = ITEMS_PER_PAGE;
+    state.currentPage = 1;
     renderVisibleItems();
 }
 
 function handleYearChange(event) {
     state.selectedYear = event.target.value;
     state.visibleItems = ITEMS_PER_PAGE;
+    state.currentPage = 1;
     renderVisibleItems();
 }
 
