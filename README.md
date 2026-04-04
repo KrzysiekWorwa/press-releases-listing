@@ -42,7 +42,14 @@ The implementation focuses on:
 -   Simulated API:
     -   delay (300–600ms)
     -   error handling support
-
+## 🧪 Error Simulation  
+  
+The fake API layer supports error simulation for testing UI states.  
+  
+```js  
+getPressReleases({ shouldFail: true });
+```
+This approach allows easy testing of edge cases without relying on a real backend.
 ## 📐 Layout
 
 -   Responsive grid:
