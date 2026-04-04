@@ -8,7 +8,10 @@ import {
     hideLoading,
     showError,
     showEmptyState,
-    hideEmptyState
+    hideEmptyState,
+    hidePaginationNav,
+    showPaginationNav,
+    renderPaginationPages
 } from "./render.js";
 import {
     getFilteredItems,
@@ -32,6 +35,10 @@ const newsGridOverlay = document.querySelector("#newsGridOverlay");
 const newsPagination = document.querySelector("#newsPagination");
 const typeFilter = document.querySelector("#typeFilter");
 const yearFilter = document.querySelector("#yearFilter");
+const paginationNav = document.querySelector("#paginationNav");
+const paginationPages = document.querySelector("#paginationPages");
+const paginationPrev = document.querySelector("#paginationPrev");
+const paginationNext = document.querySelector("#paginationNext");
 
 const ITEMS_PER_PAGE = 8;
 
@@ -88,9 +95,12 @@ function renderVisibleItems() {
     if (PAGINATION_MODE === "load-more") {
         updateLoadMoreButton(loadMoreButton, hasMoreItems);
         updateGridOverlay(newsGridOverlay, hasMoreItems);
+        hidePaginationNav(paginationNav);
     } else {
         loadMoreButton.hidden = true;
         newsGridOverlay.hidden = true;
+        showPaginationNav(paginationNav);
+        renderPaginationPages(paginationPages, totalPages, state.currentPage);
     }
 
     console.log({
@@ -153,6 +163,21 @@ function initSelectFilters() {
     yearFilter.addEventListener("change", handleYearChange);
 }
 
+function handlePaginationClick(event) {
+    const pageButton = event.target.closest(".news__pagination-page");
+
+    if (!pageButton) {
+        return;
+    }
+
+    state.currentPage = Number(pageButton.dataset.page);
+    renderVisibleItems();
+}
+
+function initPagination() {
+    paginationPages.addEventListener("click", handlePaginationClick);
+}
+
 async function init() {
     try {
         showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
@@ -168,6 +193,7 @@ async function init() {
         renderVisibleItems();
         initChipButtons();
         initSelectFilters();
+        initPagination();
         loadMoreButton.addEventListener("click", handleLoadMore);
     } catch (error) {
         console.error(error);

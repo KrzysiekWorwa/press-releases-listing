@@ -42,6 +42,33 @@ export function renderCards(container, items) {
     container.innerHTML = cardsMarkup;
 }
 
+export function renderPaginationPages(container, totalPages, currentPage) {
+    container.innerHTML = "";
+
+    for (let page = 1; page <= totalPages; page += 1) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "news__pagination-page";
+
+        if (page === currentPage) {
+            button.classList.add("news__pagination-page--active");
+        }
+
+        button.textContent = page;
+        button.dataset.page = page;
+
+        container.appendChild(button);
+    }
+}
+
+export function showPaginationNav(paginationNav) {
+    paginationNav.hidden = false;
+}
+
+export function hidePaginationNav(paginationNav) {
+    paginationNav.hidden = true;
+}
+
 export function updateGridOverlay(newsGridOverlay, hasMoreItems) {
     newsGridOverlay.hidden = !hasMoreItems;
 }

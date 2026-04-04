@@ -24,13 +24,19 @@
 .news__pagination-nav {
     display: flex;
     gap: 30px;
-    margin-top: 77px;
+    margin-top: 70px;
+}
+
+@media (max-width: 1020px) {
+    .news__pagination-nav {
+        margin-top: 30px;
+    }
 }
 
 .news__pagination-arrow {
     width: 48px;
     height: 48px;
-    background-color: #070C1E14;
+    background-color: #070c1e14;
     border: none;
     border-radius: 50%;
     display: flex;
@@ -41,7 +47,7 @@
 }
 
 .news__pagination-arrow:hover {
-    background-color: #070c1e0d;
+    background-color: #070c1e26;
 }
 
 .news__pagination-pages {
