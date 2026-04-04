@@ -42,23 +42,47 @@ export function renderCards(container, items) {
     container.innerHTML = cardsMarkup;
 }
 
+function getPaginationPages(totalPages, currentPage) {
+    if (totalPages <= 5) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    if (currentPage <= 3) {
+        return [1, 2, 3, "...", totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+        return [1, "...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [1, "...", currentPage, "...", totalPages];
+}
+
 export function renderPaginationPages(container, totalPages, currentPage) {
     container.innerHTML = "";
 
-    for (let page = 1; page <= totalPages; page += 1) {
+    const pages = getPaginationPages(totalPages, currentPage);
+
+    pages.forEach((page) => {
         const button = document.createElement("button");
         button.type = "button";
-        button.className = "news__pagination-page";
 
-        if (page === currentPage) {
-            button.classList.add("news__pagination-page--active");
+        if (page === "...") {
+            button.className = "news__pagination-ellipsis";
+            button.textContent = "...";
+            button.disabled = true;
+        } else {
+            button.className = "news__pagination-page";
+            button.textContent = page;
+            button.dataset.page = page;
+
+            if (page === currentPage) {
+                button.classList.add("news__pagination-page--active");
+            }
         }
 
-        button.textContent = page;
-        button.dataset.page = page;
-
         container.appendChild(button);
-    }
+    });
 }
 
 export function showPaginationNav(paginationNav) {

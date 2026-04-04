@@ -283,5 +283,290 @@
         "category": "non_regulatory",
         "type": "Update",
         "url": "/news/30"
+    },
+    {
+        "id": "31",
+        "title": "Nowe wytyczne dotyczące zrównoważonego rozwoju na rok 2026",
+        "excerpt": "Wraz z początkiem roku wchodzą w życie kluczowe zmiany w raportowaniu ESG.",
+        "publishedAt": "2026-01-15T10:00:00Z",
+        "category": "regulatory",
+        "type": "Report",
+        "imageUrl": "assets/images/news-4.webp",
+        "url": "/news/31"
+    },
+    {
+        "id": "32",
+        "title": "Innowacje w sektorze technologicznym - podsumowanie kwartału",
+        "excerpt": "Analiza najnowszych trendów w sztucznej inteligencji i automatyzacji procesów.",
+        "publishedAt": "2025-12-20T08:30:00Z",
+        "category": "non_regulatory",
+        "type": "Update",
+        "url": "/news/32"
+    },
+    {
+        "id": "33",
+        "title": "Oficjalne ogłoszenie zmian w strukturze zarządu",
+        "excerpt": "Rada nadzorcza powołała nowych członków do pełnienia kluczowych funkcji operacyjnych.",
+        "publishedAt": "2025-11-05T14:45:00Z",
+        "category": "non_regulatory",
+        "type": "Announcement",
+        "imageUrl": "assets/images/news-1.webp",
+        "url": "/news/33"
+    },
+    {
+        "id": "34",
+        "title": "Analiza wpływu nowych przepisów podatkowych na MŚP",
+        "excerpt": "Eksperci oceniają, jak nadchodzące zmiany wpłyną na płynność finansową przedsiębiorstw.",
+        "publishedAt": "2025-10-12T09:15:00Z",
+        "category": "regulatory",
+        "type": "Article",
+        "url": "/news/34"
+    },
+    {
+        "id": "35",
+        "title": "Aktualizacja systemów bezpieczeństwa IT",
+        "excerpt": "Wprowadzenie nowych protokołów szyfrowania danych dla wszystkich klientów korporacyjnych.",
+        "publishedAt": "2025-09-28T11:00:00Z",
+        "category": "non_regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-2.webp",
+        "url": "/news/35"
+    },
+    {
+        "id": "36",
+        "title": "Raport roczny z działalności proekologicznej",
+        "excerpt": "Szczegółowe zestawienie oszczędności energii i redukcji śladu węglowego w minionym roku.",
+        "publishedAt": "2025-08-15T16:20:00Z",
+        "category": "regulatory",
+        "type": "Report",
+        "url": "/news/36"
+    },
+    {
+        "id": "37",
+        "title": "Wpływ globalnych łańcuchów dostaw na ceny lokalne",
+        "excerpt": "Artykuł o korelacji kosztów transportu morskiego z cenami produktów na półkach.",
+        "publishedAt": "2025-07-01T13:00:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "imageUrl": "assets/images/news-3.webp",
+        "url": "/news/37"
+    },
+    {
+        "id": "38",
+        "title": "Komunikat w sprawie otwarcia nowego centrum badawczego",
+        "excerpt": "Inwestycja warta miliony euro zostanie oddana do użytku w przyszłym miesiącu.",
+        "publishedAt": "2025-06-10T10:30:00Z",
+        "category": "non_regulatory",
+        "type": "Announcement",
+        "url": "/news/38"
+    },
+    {
+        "id": "39",
+        "title": "Nowelizacja ustawy o ochronie danych osobowych",
+        "excerpt": "Kluczowe zmiany prawne, które każdy administrator danych musi znać przed jesienią.",
+        "publishedAt": "2025-05-22T08:00:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-4.webp",
+        "url": "/news/39"
+    },
+    {
+        "id": "40",
+        "title": "Wyniki finansowe za pierwszy kwartał 2025",
+        "excerpt": "Stabilny wzrost przychodów mimo niestabilnej sytuacji na rynkach wschodzących.",
+        "publishedAt": "2025-04-14T12:00:00Z",
+        "category": "regulatory",
+        "type": "Report",
+        "url": "/news/40"
+    },
+    {
+        "id": "41",
+        "title": "Zapowiedź konferencji 'Future of FinTech'",
+        "excerpt": "Największe wydarzenie branżowe odbędzie się w Warszawie już w maju.",
+        "publishedAt": "2025-03-05T09:45:00Z",
+        "category": "non_regulatory",
+        "type": "Announcement",
+        "imageUrl": "assets/images/news-1.webp",
+        "url": "/news/41"
+    },
+    {
+        "id": "42",
+        "title": "Ewolucja pracy hybrydowej w dużych korporacjach",
+        "excerpt": "Jak zmieniły się preferencje pracowników w ciągu ostatnich dwóch lat?",
+        "publishedAt": "2025-02-11T15:00:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "url": "/news/42"
+    },
+    {
+        "id": "43",
+        "title": "Aktualizacja listy substancji zakazanych w produkcji",
+        "excerpt": "Nowe rozporządzenie unijne ogranicza stosowanie niektórych polimerów.",
+        "publishedAt": "2025-01-18T11:15:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-2.webp",
+        "url": "/news/43"
+    },
+    {
+        "id": "44",
+        "title": "Strategia rozwoju cyfrowego na lata 2025-2030",
+        "excerpt": "Kompleksowy dokument określający cele transformacji cyfrowej spółki.",
+        "publishedAt": "2024-12-02T13:30:00Z",
+        "category": "non_regulatory",
+        "type": "Report",
+        "url": "/news/44"
+    },
+    {
+        "id": "45",
+        "title": "Rola etyki w rozwoju algorytmów uczenia maszynowego",
+        "excerpt": "Dogłębna analiza wyzwań moralnych stojących przed programistami AI.",
+        "publishedAt": "2024-11-15T10:00:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "imageUrl": "assets/images/news-3.webp",
+        "url": "/news/45"
+    },
+    {
+        "id": "46",
+        "title": "Ogłoszenie o naborze wniosków o dofinansowanie",
+        "excerpt": "Rusza nowa pula środków na modernizację linii produkcyjnych.",
+        "publishedAt": "2024-10-20T08:00:00Z",
+        "category": "regulatory",
+        "type": "Announcement",
+        "url": "/news/46"
+    },
+    {
+        "id": "47",
+        "title": "Zmiana stawek celnych w handlu międzynarodowym",
+        "excerpt": "Informacja o nowych taryfach obowiązujących dla rynków azjatyckich.",
+        "publishedAt": "2024-09-10T14:00:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-4.webp",
+        "url": "/news/47"
+    },
+    {
+        "id": "48",
+        "title": "Podsumowanie audytu bezpieczeństwa pracy",
+        "excerpt": "Wszystkie oddziały spełniły rygorystyczne normy bezpieczeństwa i higieny.",
+        "publishedAt": "2024-08-05T09:20:00Z",
+        "category": "regulatory",
+        "type": "Report",
+        "url": "/news/48"
+    },
+    {
+        "id": "49",
+        "title": "Start programu lojalnościowego dla partnerów",
+        "excerpt": "Nowe korzyści dla stałych kontrahentów i dostawców strategicznych.",
+        "publishedAt": "2024-07-12T11:45:00Z",
+        "category": "non_regulatory",
+        "type": "Announcement",
+        "imageUrl": "assets/images/news-1.webp",
+        "url": "/news/49"
+    },
+    {
+        "id": "50",
+        "title": "Cyberbezpieczeństwo w dobie pracy zdalnej",
+        "excerpt": "Praktyczny poradnik jak zabezpieczyć domowe biuro przed atakami phishingowymi.",
+        "publishedAt": "2024-06-01T16:00:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "url": "/news/50"
+    },
+    {
+        "id": "51",
+        "title": "Modyfikacja polityki prywatności serwisu",
+        "excerpt": "Dostosowanie zapisów do najnowszych wyroków Trybunału Sprawiedliwości.",
+        "publishedAt": "2024-05-18T10:30:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-2.webp",
+        "url": "/news/51"
+    },
+    {
+        "id": "52",
+        "title": "Zestawienie trendów konsumenckich - lato 2024",
+        "excerpt": "Czego szukają klienci w okresie wakacyjnym? Dane z platform e-commerce.",
+        "publishedAt": "2024-04-25T08:50:00Z",
+        "category": "non_regulatory",
+        "type": "Report",
+        "url": "/news/52"
+    },
+    {
+        "id": "53",
+        "title": "Ważny komunikat dla akcjonariuszy spółki",
+        "excerpt": "Terminy wypłat dywidendy oraz plan walnego zgromadzenia.",
+        "publishedAt": "2024-03-14T12:00:00Z",
+        "category": "regulatory",
+        "type": "Announcement",
+        "imageUrl": "assets/images/news-3.webp",
+        "url": "/news/53"
+    },
+    {
+        "id": "54",
+        "title": "Przyszłość transportu elektrycznego w miastach",
+        "excerpt": "Czy infrastruktura ładowania nadąży za rosnącą liczbą pojazdów?",
+        "publishedAt": "2024-02-09T14:10:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "url": "/news/54"
+    },
+    {
+        "id": "55",
+        "title": "Poprawki do standardów jakości ISO",
+        "excerpt": "Wdrożenie nowych procedur kontrolnych w procesie montażu końcowego.",
+        "publishedAt": "2024-01-01T09:00:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-4.webp",
+        "url": "/news/55"
+    },
+    {
+        "id": "56",
+        "title": "Podsumowanie finansowe roku 2023",
+        "excerpt": "Kompletny raport roczny prezentujący kondycję finansową grupy kapitałowej.",
+        "publishedAt": "2023-12-15T11:20:00Z",
+        "category": "regulatory",
+        "type": "Report",
+        "url": "/news/56"
+    },
+    {
+        "id": "57",
+        "title": "Wybór strategicznego partnera logistycznego",
+        "excerpt": "Podpisanie umowy na obsługę rynków Europy Zachodniej.",
+        "publishedAt": "2023-11-10T13:40:00Z",
+        "category": "non_regulatory",
+        "type": "Announcement",
+        "imageUrl": "assets/images/news-1.webp",
+        "url": "/news/57"
+    },
+    {
+        "id": "58",
+        "title": "Zarządzanie stresem w środowisku zawodowym",
+        "excerpt": "Metody wspierania dobrostanu pracowników i budowania odporności psychicznej.",
+        "publishedAt": "2023-10-05T15:30:00Z",
+        "category": "non_regulatory",
+        "type": "Article",
+        "url": "/news/58"
+    },
+    {
+        "id": "59",
+        "title": "Zmiana przepisów o odpadach opakowaniowych",
+        "excerpt": "Nowe obowiązki dla producentów wprowadzających produkty w plastiku.",
+        "publishedAt": "2023-09-20T10:00:00Z",
+        "category": "regulatory",
+        "type": "Update",
+        "imageUrl": "assets/images/news-2.webp",
+        "url": "/news/59"
+    },
+    {
+        "id": "60",
+        "title": "Analiza rynku nieruchomości biurowych 2023",
+        "excerpt": "Spadek popytu na duże powierzchnie na rzecz elastycznych biur co-workingowych.",
+        "publishedAt": "2023-08-12T08:15:00Z",
+        "category": "non_regulatory",
+        "type": "Report",
+        "url": "/news/60"
     }
 ]

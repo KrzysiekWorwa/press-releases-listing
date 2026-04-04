@@ -109,9 +109,13 @@ function renderVisibleItems() {
         loadMoreButton.hidden = true;
         newsGridOverlay.hidden = true;
 
-        showPaginationNav(paginationNav);
-        renderPaginationPages(paginationPages, totalPages, state.currentPage);
-        updatePaginationArrows(paginationPrev, paginationNext, hasPrevious, hasNext);
+        if (totalPages > 1) {
+            showPaginationNav(paginationNav);
+            renderPaginationPages(paginationPages, totalPages, state.currentPage);
+            updatePaginationArrows(paginationPrev, paginationNext, hasPrevious, hasNext);
+        } else {
+            hidePaginationNav(paginationNav);
+        }
     }
 }
 
