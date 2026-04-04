@@ -46,7 +46,9 @@
 
 .news__actions {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
 }
 
 .news__load-more {
@@ -63,4 +65,41 @@
 
 .news__load-more:hover {
     background-color: #070C1EE6;
+}
+
+.news__button-nav {
+    display: flex;
+    gap: 30px;
+    margin-top: 77px;
+}
+
+.news__button-arrow {
+    width: 48px;
+    height: 48px;
+    background-color: #070C1E14;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news__button-numbers {
+    display: flex;
+    gap: 10px;
+}
+
+.news__button-number {
+    width: 48px;
+    height: 48px;
+    background-color: #F5F8FF;
+    border-radius: 50%;
+    border: none;
+    color: #070C1E;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.news__button-number--active {
+    background-color: #070C1E;
+    color: white;
 }
