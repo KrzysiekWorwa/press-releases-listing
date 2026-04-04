@@ -14,11 +14,13 @@ import {
     renderPaginationPages,
     updatePaginationArrows
 } from "./render.js";
+
 import {
     getFilteredItems,
     renderTypeSelectOptions,
     renderYearSelectOptions
 } from "./filters.js";
+
 import {
     getTotalPages,
     getItemsForPage,
@@ -30,19 +32,22 @@ const newsGrid = document.querySelector("#newsGrid");
 const newsLoading = document.querySelector("#newsLoading");
 const newsError = document.querySelector("#newsError");
 const newsEmpty = document.querySelector("#newsEmpty");
+
 const loadMoreButton = document.querySelector("#loadMoreButton");
 const chipButtons = document.querySelectorAll(".news__chip");
+
 const newsGridOverlay = document.querySelector("#newsGridOverlay");
 const newsPagination = document.querySelector("#newsPagination");
+
 const typeFilter = document.querySelector("#typeFilter");
 const yearFilter = document.querySelector("#yearFilter");
+
 const paginationNav = document.querySelector("#paginationNav");
 const paginationPages = document.querySelector("#paginationPages");
 const paginationPrev = document.querySelector("#paginationPrev");
 const paginationNext = document.querySelector("#paginationNext");
 
 const ITEMS_PER_PAGE = 8;
-
 const PAGINATION_MODE = "pagination";
 
 const state = {
@@ -54,11 +59,17 @@ const state = {
     currentPage: 1
 };
 
-function getPaginationState(filteredItems) {
-    const totalPages = getTotalPages(filteredItems, ITEMS_PER_PAGE);
+function getCurrentFilteredItems() {
+    return getFilteredItems(state.allPressReleases, {
+        selectedCategory: state.selectedCategory,
+        selectedType: state.selectedType,
+        selectedYear: state.selectedYear
+    });
+}
 
+function getPaginationState(filteredItems) {
     return {
-        totalPages,
+        totalPages: getTotalPages(filteredItems, ITEMS_PER_PAGE),
         hasPrevious: hasPreviousPage(state.currentPage),
         hasNext: hasNextPage(filteredItems, state.currentPage, ITEMS_PER_PAGE)
     };
@@ -73,11 +84,7 @@ function getItemsToRender(filteredItems) {
 }
 
 function renderVisibleItems() {
-    const filteredItems = getFilteredItems(state.allPressReleases, {
-        selectedCategory: state.selectedCategory,
-        selectedType: state.selectedType,
-        selectedYear: state.selectedYear
-    });
+    const filteredItems = getCurrentFilteredItems();
 
     if (filteredItems.length === 0) {
         showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsPagination);
@@ -89,6 +96,7 @@ function renderVisibleItems() {
 
     const itemsToRender = getItemsToRender(filteredItems);
     const hasMoreItems = filteredItems.length > state.visibleItems;
+
     const { totalPages, hasPrevious, hasNext } = getPaginationState(filteredItems);
 
     renderCards(newsGrid, itemsToRender);
@@ -100,9 +108,10 @@ function renderVisibleItems() {
     } else {
         loadMoreButton.hidden = true;
         newsGridOverlay.hidden = true;
+
         showPaginationNav(paginationNav);
-        updatePaginationArrows(paginationPrev, paginationNext, hasPrevious, hasNext);
         renderPaginationPages(paginationPages, totalPages, state.currentPage);
+        updatePaginationArrows(paginationPrev, paginationNext, hasPrevious, hasNext);
     }
 }
 
@@ -117,64 +126,45 @@ function setActiveChip(clickedButton) {
 }
 
 function handleChipClick(event) {
-    const clickedButton = event.currentTarget;
-    const selectedCategory = clickedButton.dataset.category;
+    state.selectedCategory = event.currentTarget.dataset.category;
+    resetPagination();
 
-    state.selectedCategory = selectedCategory;
-    state.visibleItems = ITEMS_PER_PAGE;
-    state.currentPage = 1;
-
-    setActiveChip(clickedButton);
-    renderVisibleItems();
-}
-
-function initChipButtons() {
-    chipButtons.forEach((button) => {
-        button.addEventListener("click", handleChipClick);
-    });
-}
-
-function handleLoadMore() {
-    state.visibleItems += ITEMS_PER_PAGE;
+    setActiveChip(event.currentTarget);
     renderVisibleItems();
 }
 
 function handleTypeChange(event) {
     state.selectedType = event.target.value;
-    state.visibleItems = ITEMS_PER_PAGE;
-    state.currentPage = 1;
+    resetPagination();
     renderVisibleItems();
 }
 
 function handleYearChange(event) {
     state.selectedYear = event.target.value;
-    state.visibleItems = ITEMS_PER_PAGE;
-    state.currentPage = 1;
+    resetPagination();
     renderVisibleItems();
 }
 
-function initSelectFilters() {
+function initFilters() {
+    chipButtons.forEach((btn) =>
+        btn.addEventListener("click", handleChipClick)
+    );
+
     typeFilter.addEventListener("change", handleTypeChange);
     yearFilter.addEventListener("change", handleYearChange);
 }
 
+function resetPagination() {
+    state.currentPage = 1;
+    state.visibleItems = ITEMS_PER_PAGE;
+}
+
 function handlePaginationClick(event) {
     const pageButton = event.target.closest(".news__pagination-page");
-
-    if (!pageButton) {
-        return;
-    }
+    if (!pageButton) return;
 
     state.currentPage = Number(pageButton.dataset.page);
     renderVisibleItems();
-}
-
-function getFilteredData() {
-    return getFilteredItems(state.allPressReleases, {
-        selectedCategory: state.selectedCategory,
-        selectedType: state.selectedType,
-        selectedYear: state.selectedYear
-    });
 }
 
 function handlePrevClick() {
@@ -185,7 +175,7 @@ function handlePrevClick() {
 }
 
 function handleNextClick() {
-    const filteredItems = getFilteredData();
+    const filteredItems = getCurrentFilteredItems();
     const totalPages = getTotalPages(filteredItems, ITEMS_PER_PAGE);
 
     if (state.currentPage < totalPages) {
@@ -194,31 +184,45 @@ function handleNextClick() {
     }
 }
 
+function handleLoadMore() {
+    state.visibleItems += ITEMS_PER_PAGE;
+    renderVisibleItems();
+}
+
 function initPagination() {
     paginationPages.addEventListener("click", handlePaginationClick);
     paginationPrev.addEventListener("click", handlePrevClick);
     paginationNext.addEventListener("click", handleNextClick);
+
+    if (PAGINATION_MODE === "load-more") {
+        loadMoreButton.addEventListener("click", handleLoadMore);
+    }
 }
 
 async function init() {
     try {
-        showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
+        showLoading(
+            newsLoading,
+            newsError,
+            newsEmpty,
+            newsGrid,
+            newsGridOverlay,
+            newsPagination
+        );
 
-        const pressReleases = await getPressReleases();
-        state.allPressReleases = [...pressReleases].sort((a, b) => {
-            return new Date(b.publishedAt) - new Date(a.publishedAt);
-        });
+        const data = await getPressReleases();
+
+        state.allPressReleases = [...data].sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+        );
 
         renderTypeSelectOptions(typeFilter, state.allPressReleases);
         renderYearSelectOptions(yearFilter, state.allPressReleases);
 
         renderVisibleItems();
-        initChipButtons();
-        initSelectFilters();
+        initFilters();
         initPagination();
-        if (PAGINATION_MODE === "load-more" || PAGINATION_MODE === "both") {
-            loadMoreButton.addEventListener("click", handleLoadMore);
-        }
+
     } catch (error) {
         console.error(error);
         showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
