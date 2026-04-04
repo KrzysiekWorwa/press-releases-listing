@@ -10,6 +10,11 @@ import {
     showEmptyState,
     hideEmptyState
 } from "./render.js";
+import {
+    getFilteredItems,
+    renderTypeSelectOptions,
+    renderYearSelectOptions
+} from "./filters.js";
 
 const newsGrid = document.querySelector("#newsGrid");
 const newsLoading = document.querySelector("#newsLoading");
@@ -32,51 +37,12 @@ const state = {
     visibleItems: ITEMS_PER_PAGE
 };
 
-function getUniqueTypes(items) {
-    return [...new Set(items.map((item) => item.type))].sort();
-}
-
-function getUniqueYears(items) {
-    return [...new Set(items.map((item) => new Date(item.publishedAt).getFullYear()))]
-        .sort((a, b) => b - a);
-}
-
-function renderTypeSelectOptions(items) {
-    const types = getUniqueTypes(items);
-
-    typeFilter.innerHTML = `
-        <option value="all">All types</option>
-        ${types.map((type) => `<option value="${type}">${type}</option>`).join("")}
-    `;
-}
-
-function renderYearSelectOptions(items) {
-    const years = getUniqueYears(items);
-
-    yearFilter.innerHTML = `
-        <option value="all">All years</option>
-        ${years.map((year) => `<option value="${year}">${year}</option>`).join("")}
-    `;
-}
-
-function getFilteredItems() {
-    return state.allPressReleases.filter((item) => {
-        const matchesCategory =
-            state.selectedCategory === "all" || item.category === state.selectedCategory;
-
-        const matchesType =
-            state.selectedType === "all" || item.type === state.selectedType;
-
-        const matchesYear =
-            state.selectedYear === "all" ||
-            new Date(item.publishedAt).getFullYear().toString() === state.selectedYear;
-
-        return matchesCategory && matchesType && matchesYear;
-    });
-}
-
 function renderVisibleItems() {
-    const filteredItems = getFilteredItems();
+    const filteredItems = getFilteredItems(state.allPressReleases, {
+        selectedCategory: state.selectedCategory,
+        selectedType: state.selectedType,
+        selectedYear: state.selectedYear
+    });
 
     if (filteredItems.length === 0) {
         showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsPagination);
@@ -152,8 +118,8 @@ async function init() {
             return new Date(b.publishedAt) - new Date(a.publishedAt);
         });
 
-        renderTypeSelectOptions(state.allPressReleases);
-        renderYearSelectOptions(state.allPressReleases);
+        renderTypeSelectOptions(typeFilter, state.allPressReleases);
+        renderYearSelectOptions(yearFilter, state.allPressReleases);
 
         renderVisibleItems();
         initChipButtons();
