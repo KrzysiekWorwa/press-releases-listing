@@ -18,7 +18,7 @@
 }
 
 .news__load-more:hover {
-    background-color: #070C1EE6;
+    background-color: #070c1ecc;
 }
 
 .news__pagination-nav {
@@ -31,10 +31,17 @@
     width: 48px;
     height: 48px;
     background-color: #070C1E14;
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.news__pagination-arrow:hover {
+    background-color: #070c1e0d;
 }
 
 .news__pagination-pages {
@@ -51,9 +58,19 @@
     color: #070C1E;
     font-size: 18px;
     font-weight: 600;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.news__pagination-page:hover {
+    background-color: #070C1E14;
 }
 
 .news__pagination-page--active {
     background-color: #070C1E;
     color: white;
+}
+
+.news__pagination-page--active:hover {
+    background-color: #070c1ecc;
 }
