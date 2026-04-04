@@ -42,16 +42,12 @@ export function renderCards(container, items) {
     container.innerHTML = cardsMarkup;
 }
 
-export function updateLoadMoreButton(loadMoreButton, filteredItemsLength, visibleItems) {
-    loadMoreButton.hidden = filteredItemsLength <= visibleItems;
+export function updateGridOverlay(newsGridOverlay, hasMoreItems) {
+    newsGridOverlay.hidden = !hasMoreItems;
 }
 
-export function updateGridOverlay(newsGridOverlay, filteredItemsLength, visibleItems) {
-    newsGridOverlay.hidden = filteredItemsLength <= visibleItems;
-}
-
-export function updateActionsVisibility(newsActions, filteredItemsLength) {
-    newsActions.hidden = filteredItemsLength === 0;
+export function updateActionsVisibility(newsActions, hasMoreItems) {
+    newsActions.hidden = !hasMoreItems;
 }
 
 export function showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions) {
@@ -67,19 +63,17 @@ export function hideLoading(newsLoading) {
     newsLoading.hidden = true;
 }
 
-export function showError(newsError, newsEmpty, newsGrid, loadMoreButton, newsGridOverlay, newsActions) {
+export function showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions) {
     newsError.hidden = false;
     newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
-    loadMoreButton.hidden = true;
     newsGridOverlay.hidden = true;
     newsActions.hidden = true;
 }
 
-export function showEmptyState(newsEmpty, newsGrid, loadMoreButton, newsGridOverlay, newsActions) {
+export function showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsActions) {
     newsEmpty.hidden = false;
     newsGrid.innerHTML = "";
-    loadMoreButton.hidden = true;
     newsGridOverlay.hidden = true;
     newsActions.hidden = true;
 }

@@ -1,7 +1,6 @@
 import { getPressReleases } from "./dataService.js";
 import {
     renderCards,
-    updateLoadMoreButton,
     updateGridOverlay,
     updateActionsVisibility,
     showLoading,
@@ -41,28 +40,29 @@ function getFilteredItems() {
 function renderVisibleItems() {
     const filteredItems = getFilteredItems();
 
-    updateActionsVisibility(newsActions, filteredItems.length);
-
     if (filteredItems.length === 0) {
-        showEmptyState(newsEmpty, newsGrid, loadMoreButton, newsGridOverlay, newsActions);
+        showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsActions);
         return;
     }
 
     hideEmptyState(newsEmpty);
 
     const itemsToRender = filteredItems.slice(0, state.visibleItems);
+    const hasMoreItems = filteredItems.length > state.visibleItems;
 
     renderCards(newsGrid, itemsToRender);
-    updateLoadMoreButton(loadMoreButton, filteredItems.length, state.visibleItems);
-    updateGridOverlay(newsGridOverlay, filteredItems.length, state.visibleItems);
+    updateActionsVisibility(newsActions, hasMoreItems);
+    updateGridOverlay(newsGridOverlay, hasMoreItems);
 }
 
 function setActiveChip(clickedButton) {
     chipButtons.forEach((button) => {
         button.classList.remove("news__chip--active");
+        button.setAttribute("aria-pressed", "false");
     });
 
     clickedButton.classList.add("news__chip--active");
+    clickedButton.setAttribute("aria-pressed", "true");
 }
 
 function handleChipClick(event) {
@@ -92,14 +92,16 @@ async function init() {
         showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions);
 
         const pressReleases = await getPressReleases();
-        state.allPressReleases = pressReleases;
+        state.allPressReleases = [...pressReleases].sort((a, b) => {
+            return new Date(b.publishedAt) - new Date(a.publishedAt);
+        });
 
         renderVisibleItems();
         initChipButtons();
         loadMoreButton.addEventListener("click", handleLoadMore);
     } catch (error) {
         console.error(error);
-        showError(newsError, newsEmpty, newsGrid, loadMoreButton, newsGridOverlay, newsActions);
+        showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions);
     } finally {
         hideLoading(newsLoading);
     }

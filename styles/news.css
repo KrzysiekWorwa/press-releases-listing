@@ -46,12 +46,10 @@
 
 .news__actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
+    justify-content: center;
 }
 
-.news__button {
+.news__load-more {
     background-color: #070C1E;
     color: white;
     font-size: 18px;
@@ -60,8 +58,9 @@
     border-radius: 60px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.news__button:hover {
+.news__load-more:hover {
     background-color: #070C1EE6;
 }

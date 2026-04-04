@@ -21,14 +21,14 @@
                 <header>
                     <h1 class="news__title">News</h1>
                 </header>
-                <div class="news__chips">
-                    <button class="news__chip news__chip--active" data-category="all">
+                <div class="news__chips" role="group" aria-label="Filter news by category">
+                    <button type="button" class="news__chip news__chip--active" aria-pressed="true" data-category="all">
                         All news
                     </button>
-                    <button class="news__chip" data-category="regulatory">
+                    <button type="button" class="news__chip" aria-pressed="false" data-category="regulatory">
                         Regulatory
                     </button>
-                    <button class="news__chip" data-category="non_regulatory">
+                    <button type="button" class="news__chip" aria-pressed="false" data-category="non_regulatory">
                         Non Regulatory
                     </button>
                 </div>
@@ -40,20 +40,20 @@
                 </div>
 
 
-                <div class="news__state" id="newsLoading" hidden>
+                <div class="news__state" id="newsLoading" hidden aria-live="polite">
                     <p>Loading...</p>
                 </div>
 
-                <div class="news__state" id="newsError" hidden>
+                <div class="news__state" id="newsError" hidden aria-live="assertive">
                     <p>Something went wrong. Please try again.</p>
                 </div>
 
-                <div class="news__state" id="newsEmpty" hidden>
+                <div class="news__state" id="newsEmpty" hidden aria-live="polite">
                     <p>No results found.</p>
                 </div>
 
                 <div class="news__actions" id="newsActions" hidden>
-                    <button class="news__button" id="loadMoreButton">
+                    <button type="button" class="news__load-more" id="loadMoreButton" aria-label="Load more news">
                         Load more
                     </button>
                 </div>
