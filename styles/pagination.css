@@ -50,6 +50,11 @@
     background-color: #070c1e26;
 }
 
+.news__pagination-arrow:disabled {
+    opacity: 0.3;
+    cursor: auto;
+}
+
 .news__pagination-pages {
     display: flex;
     gap: 10px;

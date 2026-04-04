@@ -69,6 +69,11 @@ export function hidePaginationNav(paginationNav) {
     paginationNav.hidden = true;
 }
 
+export function updatePaginationArrows(prevButton, nextButton, hasPrevious, hasNext) {
+    prevButton.disabled = !hasPrevious;
+    nextButton.disabled = !hasNext;
+}
+
 export function updateGridOverlay(newsGridOverlay, hasMoreItems) {
     newsGridOverlay.hidden = !hasMoreItems;
 }

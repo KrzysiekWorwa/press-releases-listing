@@ -11,7 +11,8 @@ import {
     hideEmptyState,
     hidePaginationNav,
     showPaginationNav,
-    renderPaginationPages
+    renderPaginationPages,
+    updatePaginationArrows
 } from "./render.js";
 import {
     getFilteredItems,
@@ -42,7 +43,7 @@ const paginationNext = document.querySelector("#paginationNext");
 
 const ITEMS_PER_PAGE = 8;
 
-const PAGINATION_MODE = "both";
+const PAGINATION_MODE = "pagination";
 
 const state = {
     allPressReleases: [],
@@ -100,15 +101,9 @@ function renderVisibleItems() {
         loadMoreButton.hidden = true;
         newsGridOverlay.hidden = true;
         showPaginationNav(paginationNav);
+        updatePaginationArrows(paginationPrev, paginationNext, hasPrevious, hasNext);
         renderPaginationPages(paginationPages, totalPages, state.currentPage);
     }
-
-    console.log({
-        totalPages,
-        currentPage: state.currentPage,
-        hasPrevious,
-        hasNext
-    });
 }
 
 function setActiveChip(clickedButton) {
@@ -174,8 +169,35 @@ function handlePaginationClick(event) {
     renderVisibleItems();
 }
 
+function getFilteredData() {
+    return getFilteredItems(state.allPressReleases, {
+        selectedCategory: state.selectedCategory,
+        selectedType: state.selectedType,
+        selectedYear: state.selectedYear
+    });
+}
+
+function handlePrevClick() {
+    if (state.currentPage > 1) {
+        state.currentPage -= 1;
+        renderVisibleItems();
+    }
+}
+
+function handleNextClick() {
+    const filteredItems = getFilteredData();
+    const totalPages = getTotalPages(filteredItems, ITEMS_PER_PAGE);
+
+    if (state.currentPage < totalPages) {
+        state.currentPage += 1;
+        renderVisibleItems();
+    }
+}
+
 function initPagination() {
     paginationPages.addEventListener("click", handlePaginationClick);
+    paginationPrev.addEventListener("click", handlePrevClick);
+    paginationNext.addEventListener("click", handleNextClick);
 }
 
 async function init() {
@@ -194,7 +216,9 @@ async function init() {
         initChipButtons();
         initSelectFilters();
         initPagination();
-        loadMoreButton.addEventListener("click", handleLoadMore);
+        if (PAGINATION_MODE === "load-more" || PAGINATION_MODE === "both") {
+            loadMoreButton.addEventListener("click", handleLoadMore);
+        }
     } catch (error) {
         console.error(error);
         showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
