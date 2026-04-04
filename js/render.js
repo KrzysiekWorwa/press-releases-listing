@@ -46,36 +46,40 @@ export function updateGridOverlay(newsGridOverlay, hasMoreItems) {
     newsGridOverlay.hidden = !hasMoreItems;
 }
 
-export function updateActionsVisibility(newsActions, hasMoreItems) {
-    newsActions.hidden = !hasMoreItems;
+export function showPagination(newsPagination) {
+    newsPagination.hidden = false;
 }
 
-export function showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions) {
+export function updateLoadMoreButton(loadMoreButton, hasMoreItems) {
+    loadMoreButton.hidden = !hasMoreItems;
+}
+
+export function showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination) {
     newsLoading.hidden = false;
     newsError.hidden = true;
     newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
     newsGridOverlay.hidden = true;
-    newsActions.hidden = true;
+    newsPagination.hidden = true;
 }
 
 export function hideLoading(newsLoading) {
     newsLoading.hidden = true;
 }
 
-export function showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions) {
+export function showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination) {
     newsError.hidden = false;
     newsEmpty.hidden = true;
     newsGrid.innerHTML = "";
     newsGridOverlay.hidden = true;
-    newsActions.hidden = true;
+    newsPagination.hidden = true;
 }
 
-export function showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsActions) {
+export function showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsPagination) {
     newsEmpty.hidden = false;
     newsGrid.innerHTML = "";
     newsGridOverlay.hidden = true;
-    newsActions.hidden = true;
+    newsPagination.hidden = true;
 }
 
 export function hideEmptyState(newsEmpty) {

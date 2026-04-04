@@ -2,7 +2,8 @@ import { getPressReleases } from "./dataService.js";
 import {
     renderCards,
     updateGridOverlay,
-    updateActionsVisibility,
+    showPagination,
+    updateLoadMoreButton,
     showLoading,
     hideLoading,
     showError,
@@ -17,7 +18,7 @@ const newsEmpty = document.querySelector("#newsEmpty");
 const loadMoreButton = document.querySelector("#loadMoreButton");
 const chipButtons = document.querySelectorAll(".news__chip");
 const newsGridOverlay = document.querySelector("#newsGridOverlay");
-const newsActions = document.querySelector("#newsActions");
+const newsPagination = document.querySelector("#newsPagination");
 
 const ITEMS_PER_PAGE = 8;
 
@@ -41,17 +42,18 @@ function renderVisibleItems() {
     const filteredItems = getFilteredItems();
 
     if (filteredItems.length === 0) {
-        showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsActions);
+        showEmptyState(newsEmpty, newsGrid, newsGridOverlay, newsPagination);
         return;
     }
 
     hideEmptyState(newsEmpty);
+    showPagination(newsPagination);
 
     const itemsToRender = filteredItems.slice(0, state.visibleItems);
     const hasMoreItems = filteredItems.length > state.visibleItems;
 
     renderCards(newsGrid, itemsToRender);
-    updateActionsVisibility(newsActions, hasMoreItems);
+    updateLoadMoreButton(loadMoreButton, hasMoreItems);
     updateGridOverlay(newsGridOverlay, hasMoreItems);
 }
 
@@ -89,7 +91,7 @@ function handleLoadMore() {
 
 async function init() {
     try {
-        showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions);
+        showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
 
         const pressReleases = await getPressReleases();
         state.allPressReleases = [...pressReleases].sort((a, b) => {
@@ -101,7 +103,7 @@ async function init() {
         loadMoreButton.addEventListener("click", handleLoadMore);
     } catch (error) {
         console.error(error);
-        showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions);
+        showError(newsError, newsEmpty, newsGrid, newsGridOverlay, newsPagination);
     } finally {
         hideLoading(newsLoading);
     }
