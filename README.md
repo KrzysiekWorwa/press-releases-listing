@@ -44,12 +44,13 @@ The implementation focuses on:
     -   error handling support
 ## 🧪 Error Simulation  
   
-The fake API layer supports error simulation for testing UI states.  
+The fake API layer supports error simulation for testing UI states.
+Error behavior is controlled via a configuration flag in the app: 
   
 ```js  
-getPressReleases({ shouldFail: true });
+const SHOULD_API_FAIL = true;
 ```
-This approach allows easy testing of edge cases without relying on a real backend.
+This approach allows easy testing of loading and error states without relying on a real backend.
 ## 📐 Layout
 
 -   Responsive grid:
