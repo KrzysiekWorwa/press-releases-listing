@@ -26,7 +26,7 @@ body {
     padding: 80px 80px;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1050px) {
     .container {
         padding: 40px 40px;
     }

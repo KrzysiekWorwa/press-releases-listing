@@ -6,7 +6,7 @@
     margin-bottom: 80px;
 }
 
-@media (max-width: 1020px) {
+@media (max-width: 1050px) {
 
     .news__filters {
         flex-direction: column;
@@ -22,7 +22,6 @@
     .news__filters {
         display: flex;
         align-items: center;
-        width: 100%;
         margin-top: 20px;
         margin-bottom: 30px;
     }
@@ -72,6 +71,7 @@
     .news__selects {
         flex-direction: column;
         gap: 20px;
+        width: 100%;
         align-items: center;
     }
 }
@@ -79,8 +79,8 @@
 .news__select-dropdown {
     position: relative;
     width: 300px;
-    min-width: 170px;
-    max-width: 300px;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .news__select {
