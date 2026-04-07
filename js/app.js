@@ -39,7 +39,10 @@ const chipButtons = document.querySelectorAll(".news__chip");
 const newsGridOverlay = document.querySelector("#newsGridOverlay");
 const newsPagination = document.querySelector("#newsPagination");
 
-const typeFilter = document.querySelector("#typeFilter");
+const typeFilterDropdown = document.querySelector("#typeFilterDropdown");
+const typeFilterTrigger = document.querySelector("#typeFilterTrigger");
+const typeFilterMenu = document.querySelector("#typeFilterMenu");
+
 const yearFilter = document.querySelector("#yearFilter");
 
 const paginationNav = document.querySelector("#paginationNav");
@@ -138,8 +141,31 @@ function handleChipClick(event) {
     renderVisibleItems();
 }
 
-function handleTypeChange(event) {
-    state.selectedTypes = Array.from(event.target.selectedOptions, (option) => option.value);
+function openTypeDropdown() {
+    typeFilterMenu.hidden = false;
+    typeFilterTrigger.setAttribute("aria-expanded", "true");
+}
+
+function closeTypeDropdown() {
+    typeFilterMenu.hidden = true;
+    typeFilterTrigger.setAttribute("aria-expanded", "false");
+}
+
+function toggleTypeDropdown() {
+    const isExpanded = typeFilterTrigger.getAttribute("aria-expanded") === "true";
+
+    if (isExpanded) {
+        closeTypeDropdown();
+    } else {
+        openTypeDropdown();
+    }
+}
+
+function handleTypeChange() {
+    const checkedOptions = typeFilterMenu.querySelectorAll('input[type="checkbox"]:checked');
+
+    state.selectedTypes = Array.from(checkedOptions, (option) => option.value);
+
     resetPagination();
     renderVisibleItems();
 }
@@ -155,7 +181,15 @@ function initFilters() {
         btn.addEventListener("click", handleChipClick)
     );
 
-    typeFilter.addEventListener("change", handleTypeChange);
+    typeFilterTrigger.addEventListener("click", toggleTypeDropdown);
+    typeFilterMenu.addEventListener("change", handleTypeChange);
+
+    document.addEventListener("click", (event) => {
+        if (!typeFilterDropdown.contains(event.target)) {
+            closeTypeDropdown();
+        }
+    });
+
     yearFilter.addEventListener("change", handleYearChange);
 }
 
@@ -243,7 +277,7 @@ async function init() {
             (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
         );
 
-        renderTypeSelectOptions(typeFilter, state.allPressReleases);
+        renderTypeSelectOptions(typeFilterMenu, state.allPressReleases, state.selectedTypes);
         renderYearSelectOptions(yearFilter, state.allPressReleases);
 
         renderVisibleItems();

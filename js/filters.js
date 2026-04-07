@@ -7,11 +7,20 @@ export function getUniqueYears(items) {
         .sort((a, b) => b - a);
 }
 
-export function renderTypeSelectOptions(typeFilter, items) {
+export function renderTypeSelectOptions(typeFilterMenu, items, selectedTypes = []) {
     const types = getUniqueTypes(items);
 
-    typeFilter.innerHTML = types
-        .map((type) => `<option value="${type}">${type}</option>`)
+    typeFilterMenu.innerHTML = types
+        .map((type) => `
+            <label class="news__select-option">
+                <input
+                    type="checkbox"
+                    value="${type}"
+                    ${selectedTypes.includes(type) ? "checked" : ""}
+                >
+                <span>${type}</span>
+            </label>
+        `)
         .join("");
 }
 
