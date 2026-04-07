@@ -43,7 +43,9 @@ const typeFilterDropdown = document.querySelector("#typeFilterDropdown");
 const typeFilterTrigger = document.querySelector("#typeFilterTrigger");
 const typeFilterMenu = document.querySelector("#typeFilterMenu");
 
-const yearFilter = document.querySelector("#yearFilter");
+const yearFilterDropdown = document.querySelector("#yearFilterDropdown");
+const yearFilterTrigger = document.querySelector("#yearFilterTrigger");
+const yearFilterMenu = document.querySelector("#yearFilterMenu");
 
 const paginationNav = document.querySelector("#paginationNav");
 const paginationPages = document.querySelector("#paginationPages");
@@ -58,7 +60,7 @@ const state = {
     allPressReleases: [],
     selectedCategory: "all",
     selectedTypes: [],
-    selectedYear: "all",
+    selectedYears: [],
     visibleItems: ITEMS_PER_PAGE,
     currentPage: 1
 };
@@ -67,7 +69,7 @@ function getCurrentFilteredItems() {
     return getFilteredItems(state.allPressReleases, {
         selectedCategory: state.selectedCategory,
         selectedTypes: state.selectedTypes,
-        selectedYear: state.selectedYear
+        selectedYears: state.selectedYears
     });
 }
 
@@ -170,8 +172,31 @@ function handleTypeChange() {
     renderVisibleItems();
 }
 
-function handleYearChange(event) {
-    state.selectedYear = event.target.value;
+function openYearDropdown() {
+    yearFilterMenu.hidden = false;
+    yearFilterTrigger.setAttribute("aria-expanded", "true");
+}
+
+function closeYearDropdown() {
+    yearFilterMenu.hidden = true;
+    yearFilterTrigger.setAttribute("aria-expanded", "false");
+}
+
+function toggleYearDropdown() {
+    const isExpanded = yearFilterTrigger.getAttribute("aria-expanded") === "true";
+
+    if (isExpanded) {
+        closeYearDropdown();
+    } else {
+        openYearDropdown();
+    }
+}
+
+function handleYearChange() {
+    const checkedOptions = yearFilterMenu.querySelectorAll('input[type="checkbox"]:checked');
+
+    state.selectedYears = Array.from(checkedOptions, (option) => option.value);
+
     resetPagination();
     renderVisibleItems();
 }
@@ -184,13 +209,18 @@ function initFilters() {
     typeFilterTrigger.addEventListener("click", toggleTypeDropdown);
     typeFilterMenu.addEventListener("change", handleTypeChange);
 
+    yearFilterTrigger.addEventListener("click", toggleYearDropdown);
+    yearFilterMenu.addEventListener("change", handleYearChange);
+
     document.addEventListener("click", (event) => {
         if (!typeFilterDropdown.contains(event.target)) {
             closeTypeDropdown();
         }
-    });
 
-    yearFilter.addEventListener("change", handleYearChange);
+        if (!yearFilterDropdown.contains(event.target)) {
+            closeYearDropdown();
+        }
+    });
 }
 
 function resetPagination() {
@@ -278,7 +308,7 @@ async function init() {
         );
 
         renderTypeSelectOptions(typeFilterMenu, state.allPressReleases, state.selectedTypes);
-        renderYearSelectOptions(yearFilter, state.allPressReleases);
+        renderYearSelectOptions(yearFilterMenu, state.allPressReleases, state.selectedYears);
 
         renderVisibleItems();
         initFilters();

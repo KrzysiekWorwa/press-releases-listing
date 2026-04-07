@@ -24,13 +24,21 @@ export function renderTypeSelectOptions(typeFilterMenu, items, selectedTypes = [
         .join("");
 }
 
-export function renderYearSelectOptions(yearFilter, items) {
+export function renderYearSelectOptions(yearFilterMenu, items, selectedYears = []) {
     const years = getUniqueYears(items);
 
-    yearFilter.innerHTML = `
-        <option value="all">All years</option>
-        ${years.map((year) => `<option value="${year}">${year}</option>`).join("")}
-    `;
+    yearFilterMenu.innerHTML = years
+        .map((year) => `
+            <label class="news__select-option">
+                <input
+                    type="checkbox"
+                    value="${year}"
+                    ${selectedYears.includes(year.toString()) ? "checked" : ""}
+                >
+                <span>${year}</span>
+            </label>
+        `)
+        .join("");
 }
 
 export function getFilteredItems(items, filters) {
@@ -42,8 +50,8 @@ export function getFilteredItems(items, filters) {
             filters.selectedTypes.length === 0 || filters.selectedTypes.includes(item.type);
 
         const matchesYear =
-            filters.selectedYear === "all" ||
-            new Date(item.publishedAt).getFullYear().toString() === filters.selectedYear;
+            filters.selectedYears.length === 0 ||
+            filters.selectedYears.includes(new Date(item.publishedAt).getFullYear().toString());
 
         return matchesCategory && matchesType && matchesYear;
     });

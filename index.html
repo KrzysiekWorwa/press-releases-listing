@@ -37,7 +37,7 @@
                             Non Regulatory
                         </button>
                     </div>
-                    
+
                     <div class="news__selects">
 
                         <div class="news__select-dropdown" id="typeFilterDropdown">
@@ -56,7 +56,22 @@
                                 aria-label="Filter by type options" hidden></div>
                         </div>
 
-                        <select class="news__select" id="yearFilter" name="year" aria-label="Filter by year"></select>
+                        <div class="news__select-dropdown" id="yearFilterDropdown">
+                            <button type="button" class="news__select news__select-trigger" id="yearFilterTrigger"
+                                aria-haspopup="true" aria-expanded="false" aria-controls="yearFilterMenu">
+                                <span>Filter by year</span>
+                                <span class="news__select-icon" aria-hidden="true">
+                                    <svg width="13" height="8" viewBox="0 0 13 8" fill="none">
+                                        <path d="M0.800049 0.800003L6.4569 6.45686L12.1138 0.800003" stroke="black"
+                                            stroke-width="1.6" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                            </button>
+
+                            <div class="news__select-menu" id="yearFilterMenu" role="group"
+                                aria-label="Filter by year options" hidden></div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="news__grid-wrapper">
