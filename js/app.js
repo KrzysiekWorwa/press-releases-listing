@@ -49,6 +49,7 @@ const paginationNext = document.querySelector("#paginationNext");
 
 const ITEMS_PER_PAGE = 8;
 const PAGINATION_MODE = "pagination";
+const SHOULD_API_FAIL = false;
 
 const state = {
     allPressReleases: [],
@@ -236,7 +237,7 @@ async function init() {
             newsPagination
         );
 
-        const data = await getPressReleases();
+        const data = await getPressReleases({ shouldFail: SHOULD_API_FAIL });
 
         state.allPressReleases = [...data].sort(
             (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
