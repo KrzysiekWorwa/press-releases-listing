@@ -54,7 +54,7 @@ const SHOULD_API_FAIL = false;
 const state = {
     allPressReleases: [],
     selectedCategory: "all",
-    selectedType: "all",
+    selectedTypes: [],
     selectedYear: "all",
     visibleItems: ITEMS_PER_PAGE,
     currentPage: 1
@@ -63,7 +63,7 @@ const state = {
 function getCurrentFilteredItems() {
     return getFilteredItems(state.allPressReleases, {
         selectedCategory: state.selectedCategory,
-        selectedType: state.selectedType,
+        selectedTypes: state.selectedTypes,
         selectedYear: state.selectedYear
     });
 }
@@ -139,7 +139,7 @@ function handleChipClick(event) {
 }
 
 function handleTypeChange(event) {
-    state.selectedType = event.target.value;
+    state.selectedTypes = Array.from(event.target.selectedOptions, (option) => option.value);
     resetPagination();
     renderVisibleItems();
 }

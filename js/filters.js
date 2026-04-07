@@ -10,10 +10,9 @@ export function getUniqueYears(items) {
 export function renderTypeSelectOptions(typeFilter, items) {
     const types = getUniqueTypes(items);
 
-    typeFilter.innerHTML = `
-        <option value="all">All types</option>
-        ${types.map((type) => `<option value="${type}">${type}</option>`).join("")}
-    `;
+    typeFilter.innerHTML = types
+        .map((type) => `<option value="${type}">${type}</option>`)
+        .join("");
 }
 
 export function renderYearSelectOptions(yearFilter, items) {
@@ -31,7 +30,7 @@ export function getFilteredItems(items, filters) {
             filters.selectedCategory === "all" || item.category === filters.selectedCategory;
 
         const matchesType =
-            filters.selectedType === "all" || item.type === filters.selectedType;
+            filters.selectedTypes.length === 0 || filters.selectedTypes.includes(item.type);
 
         const matchesYear =
             filters.selectedYear === "all" ||
