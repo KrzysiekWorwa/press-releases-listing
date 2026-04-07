@@ -27,8 +27,9 @@ export function createNewCard(item) {
                 <h2 class="card__title">${item.title}</h2>
                 <p class="card__excerpt">${item.excerpt}</p>
             </div>
-            <a class="card__link-wrapper" href="${item.url}">
+            <a class="card__link-wrapper" href="${item.url}" aria-label="Read more about ${item.title}">
                 <span class="card__link">Read more</span>
+                <span class="sr-only">Read more about ${item.title}</span>
                 <svg class="card__arrow" viewBox="0 0 17 14" fill="none">
                     <path d="M5.65674 12.4039L11.3136 6.74708L5.65674 1.09022" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 </svg>
