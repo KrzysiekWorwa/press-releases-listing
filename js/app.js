@@ -20,6 +20,7 @@ const newsGridOverlay = document.querySelector("#newsGridOverlay");
 const newsActions = document.querySelector("#newsActions");
 
 const ITEMS_PER_PAGE = 8;
+const SHOULD_API_FAIL = false;
 
 const state = {
     allPressReleases: [],
@@ -91,7 +92,8 @@ async function init() {
     try {
         showLoading(newsLoading, newsError, newsEmpty, newsGrid, newsGridOverlay, newsActions);
 
-        const pressReleases = await getPressReleases();
+        const pressReleases = await getPressReleases({ shouldFail: SHOULD_API_FAIL });
+        
         state.allPressReleases = [...pressReleases].sort((a, b) => {
             return new Date(b.publishedAt) - new Date(a.publishedAt);
         });
