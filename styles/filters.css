@@ -50,7 +50,7 @@
     border-radius: 60px;
     white-space: nowrap;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 .news__chip--active {
@@ -96,7 +96,8 @@
     border: 1px solid #E0E0E0;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .news__select[aria-expanded="true"] {
@@ -119,7 +120,7 @@
     border: 1px solid #E0E0E0;
     border-radius: 0 0 10px 10px;
     background-color: #EFF3FF;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 .news__select-option {
@@ -135,4 +136,12 @@
 
 .news__select-option:last-child {
     border-bottom: none;
+}
+
+.news__select-icon {
+    transition: transform 0.3s ease;
+}
+
+.news__select[aria-expanded="true"] .news__select-icon {
+    transform: rotate(180deg);
 }

@@ -14,7 +14,7 @@
     border-radius: 60px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 .news__load-more:hover {
@@ -50,7 +50,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 .news__pagination-arrow:hover {
@@ -89,7 +89,7 @@
     color: #070C1E;
     font-size: 18px;
     font-weight: 600;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
     cursor: pointer;
 }
 
