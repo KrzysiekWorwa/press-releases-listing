@@ -143,23 +143,27 @@ function handleChipClick(event) {
     renderVisibleItems();
 }
 
-function openTypeDropdown() {
-    typeFilterMenu.hidden = false;
-    typeFilterTrigger.setAttribute("aria-expanded", "true");
+function openDropdown(menu, trigger) {
+    menu.hidden = false;
+    trigger.setAttribute("aria-expanded", "true");
 }
 
-function closeTypeDropdown() {
-    typeFilterMenu.hidden = true;
-    typeFilterTrigger.setAttribute("aria-expanded", "false");
+function closeDropdown(menu, trigger) {
+    menu.hidden = true;
+    trigger.setAttribute("aria-expanded", "false");
 }
 
-function toggleTypeDropdown() {
-    const isExpanded = typeFilterTrigger.getAttribute("aria-expanded") === "true";
+function toggleDropdown(menu, trigger, otherMenu, otherTrigger) {
+    const isExpanded = trigger.getAttribute("aria-expanded") === "true";
 
     if (isExpanded) {
-        closeTypeDropdown();
+        closeDropdown(menu, trigger);
     } else {
-        openTypeDropdown();
+        if (otherMenu && otherTrigger) {
+            closeDropdown(otherMenu, otherTrigger);
+        }
+
+        openDropdown(menu, trigger);
     }
 }
 
@@ -170,26 +174,6 @@ function handleTypeChange() {
 
     resetPagination();
     renderVisibleItems();
-}
-
-function openYearDropdown() {
-    yearFilterMenu.hidden = false;
-    yearFilterTrigger.setAttribute("aria-expanded", "true");
-}
-
-function closeYearDropdown() {
-    yearFilterMenu.hidden = true;
-    yearFilterTrigger.setAttribute("aria-expanded", "false");
-}
-
-function toggleYearDropdown() {
-    const isExpanded = yearFilterTrigger.getAttribute("aria-expanded") === "true";
-
-    if (isExpanded) {
-        closeYearDropdown();
-    } else {
-        openYearDropdown();
-    }
 }
 
 function handleYearChange() {
@@ -206,19 +190,27 @@ function initFilters() {
         btn.addEventListener("click", handleChipClick)
     );
 
-    typeFilterTrigger.addEventListener("click", toggleTypeDropdown);
+    typeFilterTrigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleDropdown(typeFilterMenu, typeFilterTrigger, yearFilterMenu, yearFilterTrigger);
+    });
+
     typeFilterMenu.addEventListener("change", handleTypeChange);
 
-    yearFilterTrigger.addEventListener("click", toggleYearDropdown);
+    yearFilterTrigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleDropdown(yearFilterMenu, yearFilterTrigger, typeFilterMenu, typeFilterTrigger);
+    });
+
     yearFilterMenu.addEventListener("change", handleYearChange);
 
     document.addEventListener("click", (event) => {
         if (!typeFilterDropdown.contains(event.target)) {
-            closeTypeDropdown();
+            closeDropdown(typeFilterMenu, typeFilterTrigger);
         }
 
         if (!yearFilterDropdown.contains(event.target)) {
-            closeYearDropdown();
+            closeDropdown(yearFilterMenu, yearFilterTrigger);
         }
     });
 }
